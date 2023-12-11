@@ -1,16 +1,34 @@
 // Clase
 
 class ToDo {
-
+  Texto
+  Prioridade
+  Feito = false
+  constructor(Texto, Prioridade){
+    this.Texto = Texto
+    this.Prioridade = Prioridade
+  }
 }
 
 // Array
-
+let array = []
 
 //funções projeto
 
-function CriarToDo() {
-
+function CriarToDo(text, prioridade, array) {
+array = array
+let novoElemento = new ToDo(text, prioridade)
+let teste = () => {
+  for(let i = 0; i <= array.length; i++){
+    if(novoElemento == array[i]){
+      return false
+    }
+}
+if(array.some(teste) == true){
+  console.log("Evento já criado")
+}else{
+  array.push(novoElemento)
+}
 }
 
 function AtualizarToDo() {
