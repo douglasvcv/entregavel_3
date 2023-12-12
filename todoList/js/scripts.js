@@ -16,7 +16,6 @@ let array = []
 //funções projeto
 
 function CriarToDo(text, prioridade, array) {
-array = array
 let novoElemento = new ToDo(text, prioridade)
 let teste = () => {
   for(let i = 0; i <= array.length; i++){
@@ -29,29 +28,66 @@ if(array.some(teste) == true){
 }else{
   array.push(novoElemento)
 }
+}}
+
+function AtualizarToDo(textoAntigo, textoNovo, array) {
+  let atualizar = false
+  for(let i = 0; i < array.length; i++){
+    if(textoAntigo == array.text[i]){
+      array.text[i] = textoNovo
+      atualizar = true
+      
+    }
+  }
+  return atualizar
 }
 
-function AtualizarToDo() {
-
+function ConcluirToDo(array, texto) {
+  array.forEach((x)=>{
+    if(x.text == texto){
+      
+      if(x.Feito == true){
+        x.Feito = false
+      }if(x.Feito==false){
+        x.Feito = true
+      }
+      return true
+    }else{
+      return false
+    }
+  })
 }
 
-function ConcluirToDo() {
-
+function ExcluirToDo(array, texto) {
+  let index
+  let remover = false
+  array.forEach((x)=>{
+    if(x.text == texto){
+      index = array.indexOf(x)
+      remover = true
+    }
+    array.splice(index, 1)
+    return remover
+  })
 }
 
-function ExcluirToDo() {
-
+function PesquisarToDo(array, texto) {
+ let pesquisa = false
+ array.forEach((x)=>{
+  if(x.text.includes(texto)){
+    pesquisa = true
+  }
+ })
+ return pesquisa
 }
 
-function PesquisarToDo() {
- 
+function OrdenarCrescente(array) {
+  array.sort((a,b)=>a.prioridade - b.prioridade)
+  return array
 }
-
-function OrdenarCrescente() {
-  
-}
-function OrdenarDecrescente() {
-  
+function OrdenarDecrescente(array) {
+  array.sort((a,b)=>b.prioridade - a.prioridade)
+  return array
 }
 
 // Seleção de elementos
